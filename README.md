@@ -1,9 +1,8 @@
 # 2025-Design-Showcase-Poster
-Poster for the 2025 UC Davis Engineering Design Showcase
+A robot description and high-level overview
 
-## Abstract
 
-Cyclone RoboSub is an interdisciplinary student design team that has dedicated the past two years to designing, manufacturing, and programming an autonomous underwater vehicle (AUV). This AUV is engineered to compete in the 2025 RoboSub Competition, where it will autonomously traverse a challenging course and complete various tasks. Equipped with eight thrusters for propulsion and an array of onboard sensors for navigation, the vehicle leverages advanced feedback control and decision-making algorithms, while a watertight enclosure safeguards sensitive electrical systems. Beyond the competition, Cyclone RoboSub is collaborating with UC Davis faculty to adapt the vehicle for upcoming field deployments and environmental data collection.
+It is intended to serve as an example of our development practices and technology stack.
 
 ## How to Run Locally
 Install Typst
@@ -19,3 +18,13 @@ To exit, use `Ctrl+C`.
 
 > [!Warning]
 > If you do not have the correct fonts installed, the output render may use Typst default fonts
+
+## License
+This code is released under the **BSD 3-Clause License**. See [`LICENSE.md`](LICENSE.md) for details.
+## Branding and Usage
+While the underlying code is openly licensed, the "Cyclone RoboSub" name, associated logos, distinctive design elements, and overall visual branding are the intellectual property of Cyclone RoboSub @ UC Davis.
+
+You are welcome to use, modify, and build upon the source code for your own projects in accordance with the BSD 3-Clause License. However, you **may not** use our team's name, logos, or any other distinctive branding elements to market or present your derivative works in a way that suggests endorsement by or association with Cyclone RoboSub @ UC Davis, or that could be confused with our official website.
+
+If you use significant portions of this code, we strongly encourage you to create your own distinct branding and name for your project.
+

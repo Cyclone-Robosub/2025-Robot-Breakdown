@@ -7,7 +7,7 @@
   // split: (1fr, 1fr, 1fr),
   split: (13.5in, 1fr, 13.5in),
   print-margin: .5in,
-  colors: (rgb("01696cff"), rgb("02979dff"), rgb("48b0b3ff"))
+  colors: (rgb("01696cff"), rgb("02979dff"), rgb("48b0b3ff"), luma(30%) )
 ) = {
 
   set document(author: "Cyclone RoboSub @ UC Davis", title: title)
@@ -94,21 +94,23 @@
   } 
  
   // Title
-  align(
-    center,
+  align(center,{
     text(2.2em, font: "Prompt", weight: "bold", fill: colors.at(0), title)
+    v(-1.7em)
+    text(.7em, colors.at(3))[See the document source on #link("https://github.com/Cyclone-Robosub/2025-Robot-Breakdown", text(fill: colors.at(0),underline[GitHub]))]
+    v(-.7em)
+    line(length: 100%, stroke: 1pt + colors.at(0))
+
+  }
   )
 
-
-  v(-1.3em)
-  line(length: 100%, stroke: 1pt + colors.at(0))
   v(-.2em)
   
-  let list(list) = {
-    for l in list {
-      l + if l != list.last() [, ]
-    }
-  }
+  // let list(list) = {
+  //   for l in list {
+  //     l + if l != list.last() [, ]
+  //   }
+  // }
 
   // align(
   //   center, 
@@ -119,7 +121,9 @@
   //   )
   // )
   // v(.9em)
+  // 
   
+  include "texts/abstract.typ"
   // include "texts/about-us.typ"
   // include "texts/robosub.typ"
   include "texts/design.typ"
