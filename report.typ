@@ -1,5 +1,5 @@
-#let poster(
-  title: "Autonomous Underwater Vehicle", 
+#let report(
+  title: "2025 Vehicle - Manny the Manatee", 
   leadership: json("data/leaders.json").map(it => [#it.name]),
   advisors: json("data/advisors.json").map(it => [#it.name]), 
   members: json("data/members.json").map(it => [#it.name]), 
@@ -15,28 +15,30 @@
   set page(
     paper: "us-letter", 
     height: auto,
-    margin: (bottom: 1.2in, top: 1in, rest: .75in),
-    background: align(bottom, image("background.svg", width: 101%)),
+    margin: (
+      bottom: 1.2in, 
+      // top: 1in, 
+      rest: .75in),
+    background: align(bottom, image("branding/background.svg", width: 101%)),
+    header-ascent: 40%,
     header: context{
       set text(weight: "light", .8em)
       // datetime.today().display("[month]/[day]/[year]")
-      date
       h(1fr)
-      counter(page).display("1")
+      date
+      // counter(page).display("1")
     },
+    footer-descent: 43%,
     footer: {
       set text(white, .8em, )
       set par(justify: false)
-      align(right, block(width: 1.20in, align(right, [Cyclone Robo Sub \@ UC Davis])))
+      align(right, block(width: 1.30in, align(right, [Cyclone Robo Sub \@ UC Davis])))
       place(bottom + right, 
         dx: .6in, 
         dy: -.3in, 
-        image("design\propeller.svg", width: .4in)
+        image("branding/propeller.svg", width: .4in)
       )
     },
-    footer-descent: 43%,
-    header-ascent: 48%,
-    
   )
 
   set text(
@@ -59,7 +61,7 @@
   
   
   set grid(
-    gutter: .1in
+    gutter: .2in
   )
   
   set heading(numbering: none)
@@ -71,13 +73,13 @@
   
   show heading.where(level: 1): it => {
     set par(leading: .5em)
-    set text(1.75em, weight: "semibold")
+    set text(1.25em, weight: "semibold")
     v(-.5em)
     block(it.body)
   }
   
   show heading.where(level: 2): it => {
-    set text(1.5em, weight: "bold", tracking: 1.5pt)
+    set text(1.25em, weight: "bold", tracking: 1.5pt)
      v(.5em)
     block(upper(it.body))
   }
@@ -90,34 +92,15 @@
       it
     ) 
   } 
+ 
+  // Title
+  align(
+    center,
+    text(2.2em, font: "Prompt", weight: "bold", fill: colors.at(0), title)
+  )
 
-  // place(
-  //   top + right, 
-  //   // dx: 1.5em,
-  //   dy: -1.25em, 
-  //   text(
-  //     fill: luma(40%),
-  //     weight: 700, 
-  //     [Station 173]
-  //   )
-  // ) 
 
-  // place(
-  //   bottom + right,
-  //   image("design/propeller.svg")
-  // )
-    text(2.5em, font: "Prompt", weight: "bold", fill: colors.at(0), title)
-
-  // grid(
-  //   columns: (auto, 1fr, auto), 
-  //   gutter: 1in, 
-  //   align: bottom + center, 
-  //   image("design/COE_logo_color_cmyk.svg", height: 1.15in),
-  //   text(3.5em, font: "Prompt", weight: "bold", fill: colors.at(0), title),
-  //   image("design/Full Title.svg", height: 1.15in),
-  // )
-
-  v(-2.3em)
+  v(-1.3em)
   line(length: 100%, stroke: 1pt + colors.at(0))
   v(-.2em)
   
@@ -127,31 +110,27 @@
     }
   }
 
-  align(
-    center, 
-    stack(
-      spacing: .7em,
-      [*Leadership:* #list(leadership)],
-      [*Advisors:* #list(advisors)],
-    )
-  )
+  // align(
+  //   center, 
+  //   stack(
+  //     spacing: .7em,
+  //     [*Leadership:* #list(leadership)],
+  //     [*Advisors:* #list(advisors)],
+  //   )
+  // )
   // v(.9em)
   
-  // Body
-  // grid(
-    // columns: split, 
-    // column-gutter: 2%,
-    // stroke: (x, y) => 
-    //   if x == 1 or x == 2 {colors.at(2)},
-    include "column-left.typ"
-    pagebreak()
-    // grid.vline(position: start),
-    include "column-middle.typ"
-    pagebreak()
-    include "column-right.typ"
-
-  // )  
+  // include "texts/about-us.typ"
+  // include "texts/robosub.typ"
+  include "texts/design.typ"
+  include "texts/manipulation.typ"
+  include "texts/software.typ"
+  include "texts/dynamics.typ"
+  include "texts/vision.typ"
+  include "texts/electrical.typ"
+  include "texts/research.typ"
+  // include "texts/acknoledgements.typ"
 }
 
-#poster()
+#report()
 
