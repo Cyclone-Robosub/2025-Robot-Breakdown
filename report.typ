@@ -16,28 +16,35 @@
     paper: "us-letter", 
     height: auto,
     margin: (
-      bottom: 1.2in, 
+      // bottom: 1.2in, 
       // top: 1in, 
       rest: .75in),
-    background: align(bottom, image("branding/background.svg", width: 101%)),
+    // background: align(bottom, image("branding/background.svg", width: 101%)),
     header-ascent: 40%,
     header: context{
       set text(weight: "light", .8em)
+      set align(right)
       // datetime.today().display("[month]/[day]/[year]")
-      h(1fr)
-      date
-      // counter(page).display("1")
+      // h(1fr)
+      
+      [Page #counter(page).display("1")]
+      // [#date - Page #counter(page).display("1")]
+      
     },
     footer-descent: 43%,
     footer: {
-      set text(white, .8em, )
-      set par(justify: false)
-      align(right, block(width: 1.30in, align(right, [Cyclone Robo Sub \@ UC Davis])))
-      place(bottom + right, 
-        dx: .6in, 
-        dy: -.3in, 
-        image("branding/propeller.svg", width: .4in)
+      set text(
+        // white, 
+        colors.at(0),
+        .7em, 
       )
+      set par(justify: false)
+      align(right, block(width: auto, align(right, link("https://cyclone-robosub.github.io/")[Cyclone Robo Sub \@ UC Davis])))
+      // place(bottom + right, 
+      //   dx: .6in, 
+      //   dy: -.3in, 
+      //   image("branding/propeller.svg", width: .4in)
+      // )
     },
   )
 
@@ -53,12 +60,6 @@
     spacing: 1.2em,
   )
 
-  show image: it => box(
-    it, 
-    radius: 5pt, 
-    clip: true
-  )
-  
   
   set grid(
     gutter: .2in
@@ -122,18 +123,55 @@
   // )
   // v(.9em)
   // 
-  
-  include "texts/abstract.typ"
-  // include "texts/about-us.typ"
-  // include "texts/robosub.typ"
-  include "texts/design.typ"
-  include "texts/manipulation.typ"
-  include "texts/software.typ"
-  include "texts/dynamics.typ"
-  include "texts/vision.typ"
-  include "texts/electrical.typ"
-  include "texts/research.typ"
-  // include "texts/acknoledgements.typ"
+  {
+    show image: it => box(
+      it, 
+      radius: 5pt, 
+      clip: true
+    )
+
+    include "texts/abstract.typ"
+    pagebreak()
+    // include "texts/about-us.typ"
+    // include "texts/robosub.typ"
+    include "texts/design.typ"
+    include "texts/manipulation.typ"
+    pagebreak()
+    include "texts/software.typ"
+    include "texts/dynamics.typ"
+    include "texts/vision.typ"
+    pagebreak()
+    include "texts/electrical.typ"
+  }
+
+  set page(
+    margin: (
+    bottom: 1.2in, 
+    // top: 1in, 
+    rest: .75in),
+    background: align(bottom, image("branding/background.svg", width: 101%)),
+    footer: {
+      set text(white, .8em, )
+      set par(justify: false)
+      align(right, block(width: 1.30in, align(right, link("https://cyclone-robosub.github.io/")[Cyclone Robo Sub \@ UC Davis])))
+      place(bottom + right, 
+        dx: .6in, 
+        dy: -.3in, 
+        image("branding/propeller.svg", width: .4in)
+      )
+    },
+  )
+
+  {
+    show image: it => box(
+      it, 
+      radius: 5pt, 
+      clip: true
+    )
+    include "texts/research.typ"
+    // include "texts/acknoledgements.typ"
+  }
+
 }
 
 #report()
