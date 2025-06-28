@@ -7,7 +7,7 @@
   // split: (1fr, 1fr, 1fr),
   split: (13.5in, 1fr, 13.5in),
   print-margin: .5in,
-  colors: (rgb("01696cff"), rgb("02979dff"), rgb("48b0b3ff"), luma(30%) )
+  colors: (rgb("01696cff"), rgb("02979dff"), rgb("48b0b3ff"), luma(30%), luma(43.14%) )
 ) = {
 
   set document(author: "Cyclone RoboSub @ UC Davis", title: title)
@@ -16,17 +16,18 @@
     paper: "us-letter", 
     height: auto,
     margin: (
-      // bottom: 1.2in, 
-      // top: 1in, 
+      bottom: 1in, 
+      top: 1in, 
       rest: .75in),
     // background: align(bottom, image("branding/background.svg", width: 101%)),
-    header-ascent: 40%,
+    header-ascent: 50%,
     header: context{
-      set text(weight: "light", .8em)
+      set text( .7em, colors.at(4))
       set align(right)
       // datetime.today().display("[month]/[day]/[year]")
-      // h(1fr)
       
+      title
+      h(1fr)
       [Page #counter(page).display("1")]
       // [#date - Page #counter(page).display("1")]
       
@@ -35,11 +36,20 @@
     footer: {
       set text(
         // white, 
-        colors.at(0),
+        colors.at(4),
         .7em, 
       )
       set par(justify: false)
-      align(right, block(width: auto, align(right, link("https://cyclone-robosub.github.io/")[Cyclone Robo Sub \@ UC Davis])))
+
+      line(length: 100%)
+      [
+        See the document source on 
+        #link("https://github.com/Cyclone-Robosub/2025-Robot-Breakdown", text(fill: colors.at(0),underline[GitHub]))
+        #h(1fr)
+        #link("https://cyclone-robosub.github.io/")[#text(colors.at(4))[Cyclone RoboSub] \@ UC Davis]
+      ]
+
+      // align(right, block(width: auto, align(right, link("https://cyclone-robosub.github.io/")[Cyclone Robo Sub \@ UC Davis])))
       // place(bottom + right, 
       //   dx: .6in, 
       //   dy: -.3in, 
@@ -95,15 +105,15 @@
   } 
  
   // Title
-  align(center,{
-    text(2.2em, font: "Prompt", weight: "bold", fill: colors.at(0), title)
-    v(-1.7em)
-    text(.7em, colors.at(3))[See the document source on #link("https://github.com/Cyclone-Robosub/2025-Robot-Breakdown", text(fill: colors.at(0),underline[GitHub]))]
-    v(-.7em)
-    line(length: 100%, stroke: 1pt + colors.at(0))
+  // align(center,{
+  //   text(2.2em, font: "Prompt", weight: "bold", fill: colors.at(0), title)
+  //   v(-1.7em)
+  //   text(.7em, colors.at(3))[See the document source on #link("https://github.com/Cyclone-Robosub/2025-Robot-Breakdown", text(fill: colors.at(0),underline[GitHub]))]
+  //   v(-.7em)
+  //   line(length: 100%, stroke: 1pt + colors.at(0))
 
-  }
-  )
+  // }
+  // )
 
   v(-.2em)
   
@@ -130,8 +140,8 @@
       clip: true
     )
 
-    include "texts/abstract.typ"
-    pagebreak()
+    // include "texts/abstract.typ"
+    // pagebreak()
     // include "texts/about-us.typ"
     // include "texts/robosub.typ"
     include "texts/design.typ"
