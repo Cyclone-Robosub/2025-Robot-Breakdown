@@ -1,5 +1,5 @@
 #let report(
-  title: "2025 Vehicle - Manny the Manatee", 
+  title: "2025 Vehicle Overview - Manny the Manatee", 
   leadership: json("data/leaders.json").map(it => [#it.name]),
   advisors: json("data/advisors.json").map(it => [#it.name]), 
   members: json("data/members.json").map(it => [#it.name]), 
@@ -95,6 +95,12 @@
     block(upper(it.body))
   }
 
+  show image: it => box(
+    it, 
+    radius: 5pt, 
+    clip: true
+  )
+
   show figure.caption: it => {
     v(-.15em)
     text(
@@ -133,33 +139,35 @@
   // )
   // v(.9em)
   // 
-  {
-    show image: it => box(
-      it, 
-      radius: 5pt, 
-      clip: true
-    )
 
-    // include "texts/abstract.typ"
-    // pagebreak()
-    // include "texts/about-us.typ"
-    // include "texts/robosub.typ"
-    include "texts/design.typ"
-    include "texts/manipulation.typ"
-    pagebreak()
-    include "texts/software.typ"
-    include "texts/dynamics.typ"
-    include "texts/vision.typ"
-    pagebreak()
-    include "texts/electrical.typ"
-  }
+  include "texts/design.typ"
+  include "texts/manipulation.typ"
+  pagebreak()
+  include "texts/software.typ"
+  include "texts/dynamics.typ"
+  include "texts/vision.typ"
+  pagebreak()
+  include "texts/electrical.typ"
+  
 
   set page(
     margin: (
     bottom: 1.2in, 
     // top: 1in, 
     rest: .75in),
-    background: align(bottom, image("branding/background.svg", width: 101%)),
+    background: {
+    align(bottom, image("branding/background.svg", width: 101%))
+    
+    place(
+      bottom, 
+      rect(
+        fill: colors.at(0),
+        stroke: none,
+        width: 100%,
+        height: 7pt
+      )
+    )
+    },
     footer: {
       set text(white, .8em, )
       set par(justify: false)
@@ -172,15 +180,8 @@
     },
   )
 
-  {
-    show image: it => box(
-      it, 
-      radius: 5pt, 
-      clip: true
-    )
-    include "texts/research.typ"
-    // include "texts/acknoledgements.typ"
-  }
+  include "texts/research.typ"
+  
 
 }
 
