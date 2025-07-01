@@ -1,5 +1,5 @@
 #let report(
-  title: "2025 Vehicle Overview - Manny the Manatee", 
+  title: "2025 Vehicle Overview - The Manatee (Manny)", 
   leadership: json("data/leaders.json").map(it => [#it.name]),
   advisors: json("data/advisors.json").map(it => [#it.name]), 
   members: json("data/members.json").map(it => [#it.name]), 
